@@ -1,0 +1,57 @@
+/* Define the style for the form element */
+form {
+  /* Set the width of the form to 80% of the parent element */
+  width: 50%;
+  /* Center the form horizontally */
+  margin: 0 auto;
+  /* Add some padding around the form */
+  padding: 20px;
+  /* Add a light gray border around the form */
+  border: 1px solid #ccc;
+}
+
+/* Define the style for the label elements */
+label {
+  /* Display the labels as block elements */
+  display: block;
+  /* Set the font size to 16 pixels */
+  font-size: 16px;
+  /* Set the font weight to bold */
+  font-weight: bold;
+  /* Add some margin below the labels */
+  margin-bottom: 5px;
+}
+
+/* Define the style for the input elements */
+input {
+  /* Display the inputs as block elements */
+  display: block;
+  /* Set the width of the inputs to 100% of the parent element */
+  width: 100%;
+  /* Set the height of the inputs to 30 pixels */
+  height: 30px;
+  /* Set the font size to 14 pixels */
+  font-size: 14px;
+  /* Add some padding inside the inputs */
+  padding: 5px;
+  /* Add a light gray border around the inputs */
+  border: 1px solid #ccc;
+  /* Add some margin below the inputs */
+  margin-bottom: 10px;
+}
+
+/* Define the style for the password inputs */
+input[type="password"] {
+   /* Use a dot character for masking the password input */
+   -webkit-text-security: disc;
+}
+
+/* Define the style for the submit button */
+input[type="submit"] {
+   /* Set the background color of the button to blue */
+   background-color: blue;
+   /* Set the color of the button text to white */
+   color: white;
+   /* Set the cursor to pointer when hovering over the button */
+   cursor: pointer;
+}
