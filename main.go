@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/confluentinc/confluent-kafka-go/v2/kafka"
@@ -85,12 +86,15 @@ func main() {
 			panic(err)
 		}
 		var schemaData SchemaData
-		json.Unmarshal([]byte(schemaMeta.SchemaInfo.Schema), &schemaData)
+		err = json.Unmarshal([]byte(schemaMeta.SchemaInfo.Schema), &schemaData)
+		if err != nil {
+			panic(err)
+		}
 
 		printFields(schemaData.Fields)
 	})
 
 	fmt.Println("Server running")
 
-	http.ListenAndServe(":3000", r)
+	log.Fatal(http.ListenAndServe(":3000", r))
 }
