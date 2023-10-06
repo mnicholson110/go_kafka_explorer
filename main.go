@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 
@@ -8,6 +9,25 @@ import (
 	"github.com/confluentinc/confluent-kafka-go/v2/schemaregistry"
 	"github.com/go-chi/chi/v5"
 )
+
+type SchemaData struct {
+	Type        string
+	Name        string
+	ConnectName string
+	Namespace   string
+	Fields      []SchemaField
+}
+
+type SchemaField struct {
+	Name string
+	Type string
+}
+
+func printFields(fields []SchemaField) {
+	for _, field := range fields {
+		fmt.Println("Field:", field.Name, "("+field.Type+")")
+	}
+}
 
 func main() {
 	r := chi.NewRouter()
@@ -64,7 +84,10 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		fmt.Println(schemaMeta.SchemaInfo)
+		var schemaData SchemaData
+		json.Unmarshal([]byte(schemaMeta.SchemaInfo.Schema), &schemaData)
+
+		printFields(schemaData.Fields)
 	})
 
 	fmt.Println("Server running")
