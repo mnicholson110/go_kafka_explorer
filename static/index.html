@@ -1,9 +1,11 @@
 <head>
     <title>Home</title>
     <link href="static/css/style.css" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
 </head>
 <body>
-  <form action="/post" method="POST">
+  <div id="schema-div"></div>
+  <form hx-post="/post" hx-target="#schema-div" hx-swap="outerHTML">
     <div>
       <label for="bootstrap">Bootstrap Servers</label>
       <input type="text" id="bootstrap" name="bootstrap" required>

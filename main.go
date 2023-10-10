@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 
@@ -92,6 +93,13 @@ func main() {
 		}
 
 		printFields(schemaData.Fields)
+
+		tmpl, err := template.ParseFiles("static/templates/schema.html")
+		if err != nil {
+			panic(err)
+		}
+
+		tmpl.Execute(w, schemaData)
 	})
 
 	fmt.Println("Server running")
