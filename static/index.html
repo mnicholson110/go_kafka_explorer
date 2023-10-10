@@ -5,7 +5,7 @@
 </head>
 <body>
   <div id="schema-div"></div>
-  <form hx-post="/post" hx-target="#schema-div" hx-swap="outerHTML">
+  <form hx-post="/post" hx-target="#schema-div" hx-swap="innerHTML">
     <div>
       <label for="bootstrap">Bootstrap Servers</label>
       <input type="text" id="bootstrap" name="bootstrap" required>
